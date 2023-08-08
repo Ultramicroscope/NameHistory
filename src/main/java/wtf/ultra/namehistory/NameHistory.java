@@ -56,18 +56,20 @@ public class NameHistory implements ICommand {
         (new Thread(() -> {
             try {
                 String uuid = null;
-                for (EntityPlayer player : Minecraft.getMinecraft().theWorld.playerEntities) {
-                    if (player.getName().equals(input)) {
-                        uuid = player.getUniqueID().toString();
-                        break;
+                if (input.length() != 36) {
+                    for (EntityPlayer player : Minecraft.getMinecraft().theWorld.playerEntities) {
+                        if (player.getName().equals(input)) {
+                            uuid = player.getUniqueID().toString();
+                            break;
+                        }
                     }
-                }
 
-                if (uuid == null) {
-                    uuid = new JsonParser().parse(
-                            new URLRequest(MOJANG.replace("%s", input)).getResponse()
-                    ).getAsJsonObject().get("id").getAsString();
-                }
+                    if (uuid == null) {
+                        uuid = new JsonParser().parse(
+                                new URLRequest(MOJANG.replace("%s", input)).getResponse()
+                        ).getAsJsonObject().get("id").getAsString();
+                    }
+                } else uuid = input;
 
                 uuid = unstripUuidAsString(uuid);
                 IChatComponent uuidChatComponent = new ChatComponentText(String.valueOf(EnumChatFormatting.DARK_GREEN) + EnumChatFormatting.BOLD + uuid);
@@ -93,7 +95,7 @@ public class NameHistory implements ICommand {
                 e.printStackTrace();
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Couldn't find name history for " + input));
             }
-        })).start();
+        })).start;
     }
 
     public boolean canCommandSenderUseCommand(ICommandSender icommandsender){

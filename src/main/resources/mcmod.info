@@ -1,0 +1,16 @@
+[
+    {
+        "modid": "namehistory",
+        "name": "Name History",
+        "description": "retrieve previous names of a user.",
+        "version": "1.8",
+        "mcversion": "",
+        "url": "",
+        "updateUrl": "",
+        "authorList": ["honeyfuggle"],
+        "credits": "",
+        "logoFile": "logo.png",
+        "screenshots": [],
+        "dependencies": []
+    }
+]

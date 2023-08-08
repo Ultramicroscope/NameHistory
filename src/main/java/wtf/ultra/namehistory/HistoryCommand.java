@@ -16,13 +16,8 @@ import net.weavemc.loader.api.command.Command;
 import org.jetbrains.annotations.NotNull;
 
 public class HistoryCommand extends Command {
-    private static final String MOJANG = "https://api.mojang.com/users/profiles/minecraft/%s",
-            LABY = "https://laby.net/api/v2/user/%s/get-profile";
-    private final HoverEvent CLICK_TO_COPY = new HoverEvent(
-            HoverEvent.Action.SHOW_TEXT, new ChatComponentText(
-            EnumChatFormatting.YELLOW + "click to copy"
-    )
-    );
+    private static final String MOJANG = "https://api.mojang.com/users/profiles/minecraft/%s", LABY = "https://laby.net/api/v2/user/%s/get-profile";
+    private final HoverEvent CLICK_TO_COPY = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText(EnumChatFormatting.YELLOW + "click to copy"));
 
     public HistoryCommand() {
         super("history", "his");
@@ -54,14 +49,8 @@ public class HistoryCommand extends Command {
                 }
 
                 uuid = unstripUuidAsString(uuid);
-                IChatComponent uuidChatComponent = new ChatComponentText(
-                        String.valueOf(EnumChatFormatting.DARK_GREEN) + EnumChatFormatting.BOLD + uuid
-                );
-                ChatStyle style = new ChatStyle().setChatClickEvent(
-                        new ClickEvent(
-                                ClickEvent.Action.RUN_COMMAND, "/history $SENDTOCLIPBOARD " + uuid
-                        )
-                );
+                IChatComponent uuidChatComponent = new ChatComponentText(String.valueOf(EnumChatFormatting.DARK_GREEN) + EnumChatFormatting.BOLD + uuid);
+                ChatStyle style = new ChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/history $SENDTOCLIPBOARD " + uuid));
                 uuidChatComponent.setChatStyle(style);
                 uuidChatComponent.getChatStyle().setChatHoverEvent(CLICK_TO_COPY);
                 Minecraft.getMinecraft().thePlayer.addChatMessage(uuidChatComponent);

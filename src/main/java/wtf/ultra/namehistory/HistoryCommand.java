@@ -27,7 +27,7 @@ public class HistoryCommand extends Command {
     public void handle(@NotNull String[] args) {
         if (args.length < 1) return;
         String input = args[0];
-        if (input.equals("$SENDTOCLIPBOARD")) {
+        if (input.equals("$SENDTOCLIPBOARD") && args.length > 1) {
             GuiControls.setClipboardString(args[1]);
             return;
         }
@@ -36,7 +36,7 @@ public class HistoryCommand extends Command {
             try {
                 String uuid = null;
                 for (EntityPlayer player : Minecraft.getMinecraft().theWorld.playerEntities) {
-                    if (player.getName().equals(args[0])) {
+                    if (player.getName().equals(input)) {
                         uuid = player.getUniqueID().toString();
                         break;
                     }
@@ -70,7 +70,7 @@ public class HistoryCommand extends Command {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(result.toString()));
             } catch (Exception e) {
                 e.printStackTrace();
-                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Couldn't find name history for " + args[0]));
+                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Couldn't find name history for " + input));
             }
         })).start();
     }

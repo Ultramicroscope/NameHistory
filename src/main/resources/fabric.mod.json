@@ -1,0 +1,23 @@
+{
+	"schemaVersion": 1,
+	"id": "history",
+	"version": "${version}",
+	"name": "Name history",
+	"description": "Retrieve the previous names of a user.",
+	"authors": [
+		"honeyfuggle"
+	],
+	"icon": "assets/history/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"wtf.ultra.NameHistoryMod"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.14.19",
+		"minecraft": "~1.19.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}

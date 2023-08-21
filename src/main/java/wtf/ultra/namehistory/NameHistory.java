@@ -2,7 +2,6 @@ package wtf.ultra.namehistory;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,7 @@ public class NameHistory implements ICommand {
         (new Thread(() -> {
             try {
                 String uuid = null;
-                if (input.length() == 36) {
+                if (input.length() == 32 || input.length() == 36) {
                     uuid = input;
                 } else {
                     for (EntityPlayer player : Minecraft.getMinecraft().theWorld.playerEntities) {

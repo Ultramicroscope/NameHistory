@@ -64,7 +64,7 @@ public class HistoryCommand extends Command {
                 for (JsonElement i: nameList) {
                     date = i.getAsJsonObject().get("changed_at").toString();
                     date = date.replace("\"", "");
-                    result.append(EnumChatFormatting.DARK_AQUA).append(i.getAsJsonObject().get("name").getAsString()).append(" ").append(EnumChatFormatting.GRAY).append(date.length() >= 10 ? date.substring(0, 10) : date).append("\n");
+                    result.append(EnumChatFormatting.DARK_AQUA).append(i.getAsJsonObject().get("username").getAsString()).append(" ").append(EnumChatFormatting.GRAY).append(date.length() >= 10 ? date.substring(0, 10) : date).append("\n");
                 }
                 result.append(EnumChatFormatting.RED).append(EnumChatFormatting.STRIKETHROUGH).append("-----------------------------------------------------");
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(result.toString()));

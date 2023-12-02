@@ -4,19 +4,16 @@ plugins {
 }
 
 group = "wtf.ultra"
-version = "1.0"
+version = "1.0.1"
 
 minecraft.version("1.8.9")
 
 repositories {
     maven("https://jitpack.io")
-    maven("https://repo.spongepowered.org/maven/")
 }
 
 dependencies {
-    compileOnly("com.github.weave-mc:weave-loader:70bd82faa6")
-
-    compileOnly("org.spongepowered:mixin:0.8.5")
+    compileOnly("com.github.weave-mc:weave-loader:v0.2.4")
 }
 
 tasks.compileJava {
